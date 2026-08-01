@@ -2,6 +2,19 @@
 
 Python project template with linting strict enough to keep AI-generated code honest.
 
+## Start a new project
+
+Run this in an empty directory — it clones the template, drops its history, renames the project after the directory, and commits:
+
+```bash
+NAME=${PWD##*/} && git clone --depth 1 git@github.com:berekvolgyipeter/python-template.git . \
+  && rm -rf .git \
+  && sed -i '' "s/python-template/$NAME/g; s/Python Template/$NAME/g" pyproject.toml \
+  && git init -b main && git add -A && git commit -m "chore: init from python-template"
+```
+
+`sed -i ''` is macOS; on Linux use `sed -i`.
+
 ## Setup
 
 ```bash
@@ -10,7 +23,7 @@ make install
 
 Requires [uv](https://docs.astral.sh/uv/). The Python version is pinned to a single minor release in [pyproject.toml](pyproject.toml) — `uv python install` picks it up.
 
-Then rename `name` and `description` in [pyproject.toml](pyproject.toml), and `cp .env.example .env` if you want the claude-context MCP server.
+Then `cp .env.example .env` if you want the claude-context MCP server.
 
 ## Commands
 
