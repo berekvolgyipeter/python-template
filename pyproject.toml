@@ -61,7 +61,10 @@ select = [
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101", "PLR2004"] # assert and magic values are the point in tests
+"tests/**" = [
+    "S101",
+    "PLR2004",
+] # assert and magic values are the point in tests
 
 # Limit function signature and body size
 [tool.ruff.lint.pylint]
@@ -93,6 +96,13 @@ enable_error_code = [
     "truthy-bool",         # non-bool object used in a boolean context
     "unused-awaitable",    # awaitable created but never awaited
 ]
+
+# Tests stay type checked, but not at the cost of annotating every test and @patch mock arg
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+disallow_untyped_decorators = false
 
 # Scope coverage to the package
 [tool.coverage.run]
