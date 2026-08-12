@@ -59,6 +59,7 @@ venv.bak/
 
 # Claude Code
 .claude/.code-reviews/
+.claude/tmp/
 
 # Scratch
 .scratch/
